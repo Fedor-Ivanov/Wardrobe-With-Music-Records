@@ -1,0 +1,35 @@
+.slick-slide {
+	height: 60%;
+}
+
+.slick-slide:focus {
+	outline: none;
+}
+
+.slick-dots li {
+	transition: .2s;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #333333;
+	margin-left: 20px;
+}
+	
+.slick-dots li button {
+	width: 20px;
+	height: 20px;
+}
+
+.slick-dots li.slick-active {
+	background: $mainC2;
+}
+
+.slick-dots li:hover {
+	animation: vibrate-1 0.3s linear infinite both;
+	background: $mainC2;
+}
+
+.slick-dots li button, .slick-dots li button:before {
+	color: transparent;
+  	opacity: 0;
+}

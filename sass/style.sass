@@ -1,0 +1,335 @@
+// ============================
+// IMPORTS
+// ============================
+@import "options"
+@import "default"
+@import "slick"
+
+// ============================
+// MAIN STYLES
+// ============================
+
+body
+	background-color: #000000
+	overflow: hidden
+
+.loader
+	background-color: #000000
+	width: 100%
+	height: 100%
+	position: fixed
+	top: 0
+	left: 0
+	z-index: 1000000000
+	@include flex($jc: center, $ai: center)
+
+.cubes
+	height: 50px
+	width: 50px
+	margin: auto
+	position: relative
+
+.cubes .cube
+	width: 100%
+	height: 100%
+	background-color: $mainC2
+	position: absolute
+	bottom: 50px
+	right: 50px
+	animation: cubes 1.8s ease-in-out -1.8s infinite both
+
+
+.cubes .cube-2
+	animation-delay: -0.9s
+
+@keyframes cubes
+	0%
+		transform: rotate(0deg)
+	
+	25%
+		transform: translateX(100px) rotate(-90deg) scale(.5)
+	
+	50%
+		transform: translateX(100px) translateY(100px) rotate(90deg)
+	
+	75%
+		transform: translateX(0px) translateY(100px) rotate(-90deg) scale(.5)
+	
+	100%
+		transform: rotate(90deg)
+
+.words
+	position: absolute
+	bottom: 25%
+	font-size: 35px
+
+.menu
+	width: 100vw
+	height: 100vh
+	@include flex($jc: center, $ai: center)
+	&__introductory-text
+		&-wrap
+			@include flex($fd: column, $ai: center)
+		&-item
+			color: $mainC1
+			font-size: 40px
+	&__play
+		@include flex($jc: center, $ai: center)
+		cursor: pointer
+		font-size: 45px
+		font-family: 'Neucha', cursive
+		text-transform: uppercase
+		width: 80px
+		height: 80px
+		border-radius: 20px
+		color: $mainC2
+		background-color: $mainC1
+		transition: .3s
+		&:hover
+			color: $mainC1
+			background-color: $mainC2
+			width: 150px
+		&:hover .menu__btn
+			display: inline
+	&__btn
+		display: none
+		transition: .3s
+		color: $mainC1
+		padding-left: 5px
+
+.container
+	width: 100%
+	max-width: nth($mediaBp, 1)
+	margin-left: auto
+	margin-right: auto
+	padding-left: 10px
+	padding-right: 10px
+
+.navigation
+	height: 100px
+	position: relative
+	z-index: 120
+	background-color: #000
+	&__wrap
+		@include flex($jc: space-between)
+	&__logo
+		margin-top: 40px
+		display: block
+		&_dist
+			margin-top: 85px
+			display: block
+			img
+				width: 300px
+	&__links
+		@include flex($ai: center, $jc: space-around)
+		height: 90px
+		width: 500px
+		&-item
+			font-size: 25px
+			color: $mainC1
+			text-transform: uppercase
+			transition: 0.3s
+			&:hover
+				animation: vibrate-1 0.3s linear infinite both
+				color: $mainC2
+
+@keyframes vibrate-1
+	0%
+		transform: translate(0)
+	20%
+		transform: translate(-2px, 2px)
+	40%
+		transform: translate(-2px, -2px)
+	60%
+		transform: translate(2px, 2px)
+	80%
+		transform: translate(2px, -2px)
+	100%
+		transform: translate(0)
+
+.fullscreen-bg
+	overflow: hidden
+	z-index: -100
+	position: relative
+	height: 100%
+	width: 100%
+	padding-top: 45%
+	&__wrap
+		@include flex($jc: center, $fd: column, $ai: flex-end)
+		position: relative
+		color: $mainC1
+		height: 100%
+	&__title
+		font-size: 60px
+	&__description
+		font-size: 20px 
+		text-align: right
+		padding-top: 20px
+		width: 600px
+	&__video
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+	&__overlay
+		background: rgba(0,0,0,0.6)
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		z-index: 4
+
+.discography
+	background: #000000
+	padding: 60px
+	color: $mainC1
+	&__list
+		&-item
+			margin-bottom: 100px
+			margin-top: 100px
+			display: grid
+			grid-template-columns: auto
+			grid-template-rows: auto
+			grid-template-areas: "album" "title" "description"
+	&__wrap
+	&__album
+		&-cover
+			grid-area: album
+			position: relative
+			margin-bottom: 115px
+			transition: .2s
+			@include flex($jc: center, $ai: flex-start)
+			&-icon
+				@include flex($ai: center)
+				font-size: 40px
+				color: $mainC2
+				position: absolute
+				height: 100%
+				z-index: 999
+				transition: .2s
+			&-img
+				display: block
+				width: 200px
+				height: 200px
+				filter: grayscale(1)
+				transition: .5s
+				transform: scale(1)
+				&:hover
+					filter: grayscale(0)
+					transition: .5s
+					transform: scale(1.5)
+		&-title
+			@include flex($jc: center, $ai: center)
+			grid-area: title
+			font-size: 40px
+			padding-bottom: 40px
+		&-description
+			@include flex($jc: center, $ai: center)
+			grid-area: description
+			font-size: 20px
+			text-align: center
+			
+.members
+	padding-bottom: 100px
+	&__description
+		color: $mainC1
+		font-size: 20px
+		@include flex($jc: center, $ai: center)
+		&_one
+			text-align: left
+		&_two
+			text-align: right
+		&_tree
+			text-align: left
+		&_four
+			text-align: right
+	&__one
+		grid-column-start: 1
+		grid-column-end: 1
+		grid-row-start: 1
+		grid-row-end: 1
+	&__two
+		grid-column-start: 2
+		grid-column-end: 2
+		grid-row-start: 2
+		grid-row-end: 2
+	&__tree
+		grid-column-start: 1
+		grid-column-end: 1
+		grid-row-start: 3
+		grid-row-end: 3
+	&__four
+		grid-column-start: 2
+		grid-column-end: 2
+		grid-row-start: 4
+		grid-row-end: 4
+	&__wrap
+		padding-top: 100px
+		display: grid
+		grid-template-columns: 1fr 1fr
+		grid-template-rows: 1fr 1fr 1fr 1fr
+		justify-items: stretch
+		align-items: stretch
+	&__item
+		@include flex($jc: center)
+		perspective: 1000px
+		margin: auto
+		&:hover .members__card
+			transform: rotateY(180deg)
+	&__photo
+		display: block
+		width: 300px
+		height: 400px
+		object-fit: cover
+		filter: grayscale(1)
+	&__card
+		position: relative
+		transition: transform 0.8s
+		transform-style: preserve-3d
+		&_back
+			width: 300px
+			height: 400px
+			position: absolute
+			top: 0
+			left: 0
+			transform: rotateY(180deg)
+
+.members__card_front, .members__card_back
+	width: 100%
+	height: 100%
+	backface-visibility: hidden
+
+.footer
+	margin-bottom: 50px
+	&__wrap
+		@include flex($jc: space-between, $ai: center)
+	&__link
+		font-size: 25px
+		color: $mainC1
+		text-transform: uppercase
+		transition: 0.3s
+		&:hover
+			animation: vibrate-1 0.3s linear infinite both
+			color: $mainC2
+
+
+// ============================
+// MEDIA
+// ============================
+@for $i from 1 to length($mediaBp)
+	@media (max-width: nth($mediaBp, $i))
+		.container
+			max-width: nth($mediaBp, $i + 1)
+
+// @media (max-width: nth($mediaBp, 1))
+//
+//
+//@media (max-width: nth($mediaBp, 2))
+//
+//
+//@media (max-width: nth($mediaBp, 3))
+//
+//
+//@media (max-width: nth($mediaBp, 4))
+//
